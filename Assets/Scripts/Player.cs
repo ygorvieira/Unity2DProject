@@ -27,7 +27,12 @@ public class Player : MonoBehaviour
 
         AlteraEixo(eixo);
 
-        AlteraMovimento(andando);        
+        Animations();       
+    }
+
+    void FixedUpdate()
+    {
+        AlteraMovimento(andando); 
     }
 
     void Virar()
@@ -50,5 +55,10 @@ public class Player : MonoBehaviour
             rigidBody.velocity = new Vector2(velocidade, rigidBody.velocity.y);
         else if(andando && !viradoDireita)
             rigidBody.velocity = new Vector2(-velocidade, rigidBody.velocity.y);
+    }
+
+    void Animations()
+    {
+        animator.SetBool("Walking", andando);
     }
 }
